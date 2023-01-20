@@ -1,7 +1,10 @@
 import React from 'react'
+import FoodCard from './FoodCard'
+import Restaurant from './Restaurant'
 
 const Directory = () => {
     return (
+        <>
         <div className='w-[98.70vw] h-4/5 relative flex flex-col content-center justify-center' >
             <img alt='pic' src='https://i.ibb.co/2hdPfQf/1.png' className='blur-[3px] w-screen absolute h-full' />
             <div className='w-full absolute '>
@@ -10,6 +13,26 @@ const Directory = () => {
 
             </div>
         </div>
+        <div className='containerr'>
+          <div className='row'>
+            <div className='column'><Restaurant /></div>
+            <div className='column'><Restaurant /></div>
+            <div className='column'><Restaurant /></div>
+            <div className='column'><Restaurant /></div>
+          </div>
+        </div>
+
+        <div className='containerr'>
+          <div className='row'>
+            <div className='column'><FoodCard /></div>
+            <div className='column'><FoodCard /></div>
+            <div className='column'><FoodCard /></div>
+            <div className='column'><FoodCard /></div>
+          </div>
+
+        </div>
+        </>
+
     )
 }
 
