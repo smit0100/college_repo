@@ -1,12 +1,31 @@
 import './App.css';
 
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import Home from './pages/Home';
+import Register from './components/Register';
+import Login from './components/Login';
+import Navbar from './components/Navbar'
+import Directory from './components/Directory';
+import RestaurantPage from './pages/RestaurantPage';
+import PageNotFound from './components/PageNotFound';
+import ForgotPassword from './components/ForgotPassword';
+
 function App() {
-  
+  const router=createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<><Navbar/><Home/> </>} errorElement={<PageNotFound /> }>
+        <Route index element={<Directory/>}/>
+        <Route path="restaurant" element={<RestaurantPage/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/forgotpassword" element={<ForgotPassword />}/>
+      </Route>
+    )
+  )
   return (
-    <h1 className="header bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-100 to-teal-100">
-      
-      
-    </h1>
+    <div>
+     <RouterProvider router={router} />
+    </div>
   );
 }
 
