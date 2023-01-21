@@ -1,7 +1,49 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error,setError] = useState('');
+  const [info,setInfo] = useState('');
+
+  const navigate = useNavigate()
+  
+
+  const handleSubmit = async  () => {
+    console.log('hey');
+    console.log(email, pass);
+    const response = await axios.post('http://localhost:4000/user/login', {
+      email,password:pass
+    })
+
+    // user not exist
+    if (response.status === 400) {
+      setError(response.message);
+      return
+    }
+
+  
+
+    //userr not verified
+    if (response.status === 401) {
+      setError(response.message);
+      return;
+    }
+
+    //password wrong 
+    if (response.status === 402) {
+      setError(response.message);
+      return;
+    }
+
+
+    navigate('/');
+
+
+  }
   return (
     <>
       <div className="relative h-screen w-screen">
@@ -59,6 +101,8 @@ export default function Login() {
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -73,6 +117,8 @@ export default function Login() {
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      value={pass}
+                      onChange={(e) => setPass(e.target.value)}
                     />
                   </div>
                   <div>
@@ -91,6 +137,7 @@ export default function Login() {
                     <button
                       className="bg-black/30 border-1 border-black/50 active:bg-black/50 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
+                      onClick={handleSubmit}
                     >
                       Sign In
                     </button>

@@ -87,16 +87,23 @@ const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
-    if (!user) return res.status(200).json({ message: 'user not found' });
+    // user not exist
+
+    if (!user) return res.status(400).json({ message: 'user not exist' });
     console.log(password);
     console.log(user.password);
+
+
+    //userr not verified
+    if (!user.verified) return res.status(401).json({ message: 'please verify you user account' });
+
     const pass = await bcrypt.compareSync(password, user.password);
 
     if (pass) {
         return res.status(200).json({ message: "user founded", user });
+    } else {
+        return res.status(402).json({ message: 'please check your email and password' });
     }
-
-    return res.status(200).json({ message: "please verified your profile" });
 
 
 
