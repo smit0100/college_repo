@@ -4,16 +4,34 @@ const Resturant = new Schema({
     name: {
         type: String,
     },
+    email: {
+        type:String,
+    },
     location: {
         lat: String,
         long:String
     },
     address: {
-        type:String
+        street: {
+            type:String,
+        },
+        area: {
+            type:String
+        },
+        city: {
+            type:String
+        },
+        pincode: {
+            type:String
+        }
     },
-    pincode: {
-        type:String
-    },
+    category: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref:'Category'
+      }  
+    ],
+    
     product: [
         {
             type: mongoose.Types.ObjectId,
@@ -25,7 +43,7 @@ const Resturant = new Schema({
         ref:'BankDetails'
     },
     image: {
-        type:URL
+        type:String
     },
     order: {
         type: mongoose.Types.ObjectId,

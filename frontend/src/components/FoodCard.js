@@ -8,6 +8,53 @@ const FoodCard = () => {
             <p classNameName='absolute bottom-8 left-4 w-full text-3xl'>salad </p>
             <p classNameName='absolute bottom-2 left-4 w-full text-xl'>ok </p>
         </div> */}
+      
+         {/* <Tab.List className="grid auto-cols-auto grid-flow-col justify-start gap-x-8 whitespace-nowrap px-4 sm:mx-auto sm:max-w-2xl sm:grid-cols-3 sm:px-0 sm:text-center lg:block lg:space-y-10 lg:text-left">
+              {({ selectedIndex }) =>
+                days.map((day, dayIndex) => (
+                  <div key={day.dateTime} className="relative lg:pl-8">
+                    <svg
+                      aria-hidden="true"
+                      className={clsx(
+                        'absolute top-[0.5625rem] -left-[0.5px] hidden h-1.5 w-1.5 overflow-visible lg:block',
+                        {
+                          'fill-blue-600 stroke-blue-600':
+                            dayIndex === selectedIndex,
+                          'fill-transparent stroke-slate-400':
+                            dayIndex !== selectedIndex,
+                        }
+                      )}
+                    >
+                      <path
+                        d="M3 0L6 3L3 6L0 3Z"
+                        strokeWidth={2}
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <div className="relative">
+                      <div
+                        className={clsx('font-mono text-sm', {
+                          'text-blue-600': dayIndex === selectedIndex,
+                          'text-slate-500': dayIndex !== selectedIndex,
+                        })}
+                      >
+                        <Tab className="[&:not(:focus-visible)]:focus:outline-none">
+                          <span className="absolute inset-0" />
+                          {day.name}
+                        </Tab>
+                      </div>
+                      <time
+                        dateTime={day.dateTime}
+                        className="mt-1.5 block text-2xl font-semibold tracking-tight text-blue-900"
+                      >
+                        {day.date}
+                      </time>
+                    </div>
+                  </div>
+                ))
+              }
+            </Tab.List> */}
+
       <a href="/sdf" className="block relative rounded-lg p-4 shadow-sm shadow-indigo-100">
         <div className='before:w-[30px] before:h-[30px] before:left-2 before:skew-y-[16deg] before:-z-40  before:bg-black before:absolute'></div>
         <div className=' absolute top-3 left-2 bg-black text-xs p-1 z-20 text-white'>BESTSELLING</div>
