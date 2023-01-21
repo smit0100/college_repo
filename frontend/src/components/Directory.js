@@ -1,8 +1,26 @@
-import React from 'react'
+import axios from 'axios'
+import { response } from 'express'
+import React, { useEffect, useState } from 'react'
 import FoodCard from './FoodCard'
 import Restaurant from './Restaurant'
 
+
 const Directory = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    setLoading(true)
+      (async () => {
+        const resonse = await axios.get('http://localhost:4000/product/fetchAll');
+        setData(response.response)
+        console.log(setData);
+        setLoading(false);
+    })()
+    
+
+  },[])
     return (
         <>
         <div className='w-[98.70vw] h-4/5 relative flex flex-col content-center justify-center' >

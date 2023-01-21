@@ -38,8 +38,20 @@ const findProduct = async (req, res, next) => {
     return res.status(200).json({ message: 'product founded', product });
 }
 
+const fetchAllProduct = async (req, res, next) => {
+    
+    try {
+        const response = await Product.find();
+        return res.status(200).json({ message: 'product founded', response });    
+    } catch (e) {
+        res.status(400).json({ message: 'something went wrong' });
+    }
+    
+}
+
 module.exports = {
     createProduct,
     findProduct,
-    fetchProduct
+    fetchProduct,
+    fetchAllProduct
 }
