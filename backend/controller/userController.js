@@ -27,11 +27,11 @@ const createUser = async (req, res, next) => {
         token: crypto.randomBytes(32).toString("hex"),
     }).save();
 
-    const url = `${process.env.BASE_URL}user/${user._id}/verify/${token.token}`;
+    const url = `${process.env.BASE_URL}/user/${user._id}/verify/${token.token}`;
     console.log('this is url', url);
     await sendEmail(user.email,"Verify Email",url)
 
-    res.send('hello')
+    res.status(200).json({ email: "verfie email sent" });
 
 
     // const cryptedPass = await bcrypt.hash(pass, 10, async (err, hash) => {

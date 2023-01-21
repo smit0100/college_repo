@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
-
+const cors = require('cors');
 
 const userRoute = require('./routes/userRoute');
 const resturantRoute = require('./routes/resturantRoute');
@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGOOSE_URL, () => {
     console.log('connected');
 })
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
     extended:false

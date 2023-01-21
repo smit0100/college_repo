@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -8,21 +9,35 @@ export default function Register() {
   const [pass, setPass] = useState('');
   const [cpass, setCpass] = useState('');
   const [check, SetCheck] = useState(false);
-  const [error,setError] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [info,setInfo] = useState('')
+
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    if (pass === cpass) {
-      setError('please enter password and confirm password same');
-    }
-
+    setLoading(true)
+    console.log('hey');
+     
+    console.log(name,email,number,pass);
     const response = await axios.post('http://localhost:4000/user/create', {
       name,
       email,
       number,
-      pass
+      password:pass
     })
+    console.log(typeof(response));
+    
+    setLoading(false);
+    if (response.status == 409) {
+      setError(response.message)
+    };
 
 
+
+    setInfo('verfied your email address');
+    // navigate('/')
+    
 
   }
   return (
@@ -169,7 +184,14 @@ export default function Register() {
                           Privacy Policy
                         </a>
                       </span>
+                      
                     </label>
+                    <div>
+                      {/* //loading added */}
+                      loading
+                    </div>
+                    {/* info */}
+                    {/* error */}
                   </div>
 
                   <div className="text-center mt-6">
