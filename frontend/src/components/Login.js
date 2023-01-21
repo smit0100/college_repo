@@ -18,7 +18,7 @@ export default function Login() {
     const response = await axios.post('http://localhost:4000/user/login', {
       email,password:pass
     })
-
+    console.log(response);
     // user not exist
     if (response.status === 400) {
       setError(response.message);

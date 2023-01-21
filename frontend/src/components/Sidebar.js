@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { sidebarToggle } from '../redux/sidebar/sidebarSlice';
 const Sidebar = ({direction}) => {
-    const isToggle = useSelector(state => state.sidebar.sidebar);
+    const isToggle = useSelector(state => state.sidebarToggle.sidebar);
     const dispatch = useDispatch();
 
     const toggleSidebar = isToggle === true ? "translate-x-0" : "-translate-x-full";

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { useSelector,useDispatch} from 'react-redux';
+import {userData} from '../redux/user/userSlice'
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -15,6 +17,9 @@ export default function Register() {
 
   const navigate = useNavigate();
 
+  const user = useSelector(state => state.userData.user);
+    const dispatch = useDispatch();
+
   const handleSubmit = async () => {
     setLoading(true)
     console.log('hey');
@@ -26,7 +31,6 @@ export default function Register() {
       number,
       password:pass
     })
-    console.log(typeof(response));
     
     setLoading(false);
     if (response.status == 409) {

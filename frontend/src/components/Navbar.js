@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sidebarToggle } from '../redux/sidebar/sidebarSlice';
 const Navbar = () => {
   const dispatch = useDispatch();
-  const toggle = useSelector(state => state.sidebar.sidebar);
+  const toggle = useSelector(state => state.sidebarToggle.sidebar);
 
   return (
     <>
