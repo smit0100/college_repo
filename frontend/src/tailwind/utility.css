@@ -8,8 +8,11 @@
 
 .column{
     @apply p-3 w-full  sm:w-6/12 lg:w-4/12 xl:w-3/12 flex justify-center
+<<<<<<< HEAD
 }
 
 .anim{
     @apply transition-all duration-300
+=======
+>>>>>>> 67069672a1040d66f7d4eb77d8ac808be5e4935a
 }

@@ -10,7 +10,11 @@ const Category = new Schema({
     isActive: {
         type: Boolean,
         default:true
-    }
+    },
+    product: [{
+        type: mongoose.Types.ObjectId,
+        ref:'Product'
+    }]
 })
 
 module.exports = mongoose.model('Category', Category);

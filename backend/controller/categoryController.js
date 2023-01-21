@@ -1,7 +1,7 @@
 const Category = require('../module/CategoryModel');
 
 
-const addProduct = async (req, res, next) => {
+const addCategory = async (req, res, next) => {
     const { name, description } = req.body;
 
     const category = await new Category({ name, description }).save();
@@ -38,7 +38,7 @@ const disactive = async (req, res, next) => {
 }
 
 module.exports = {
-    addProduct,
+    addCategory,
     fetchCategory,
     active,
     disactive

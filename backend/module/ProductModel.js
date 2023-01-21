@@ -7,6 +7,10 @@ const Product = new Schema({
     price: {
         type:Number
     },
+    resturnat: {
+        type: mongoose.Types.ObjectId,
+        ref:'Resturant'  
+    },
     category: {
         type: mongoose.Types.ObjectId,
         ref:'Category'
@@ -15,7 +19,7 @@ const Product = new Schema({
         type:String
     },
     image: {
-        type:URL
+        type:String
     },
     rating: {
         type:Number
