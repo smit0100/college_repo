@@ -43,7 +43,7 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link to="/contect" className="block py-2 pl-3 pr-4 rounded text-white text-lg">
+                <Link to="/cart" className="block py-2 pl-3 pr-4 rounded text-white text-lg">
                   <i className="fa-sharp fa-solid fa-bag-shopping pr-3"></i>cart
                 </Link>
               </li>
