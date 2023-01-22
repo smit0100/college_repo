@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
-import { useSelector,useDispatch} from 'react-redux';
-import {userData} from '../redux/user/userSlice'
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -11,47 +8,31 @@ export default function Register() {
   const [pass, setPass] = useState('');
   const [cpass, setCpass] = useState('');
   const [check, SetCheck] = useState(false);
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false);
-  const [info,setInfo] = useState('')
-
-  const navigate = useNavigate();
-
-  const user = useSelector(state => state.userData.user);
-    const dispatch = useDispatch();
+  const [error,setError] = useState('')
 
   const handleSubmit = async () => {
-    setLoading(true)
-    console.log('hey');
-     
-    console.log(name,email,number,pass);
+    if (pass === cpass) {
+      setError('please enter password and confirm password same');
+    }
+
     const response = await axios.post('http://localhost:4000/user/create', {
       name,
       email,
       number,
-      password:pass
+      pass
     })
-    
-    setLoading(false);
-    if (response.status == 409) {
-      setError(response.message)
-    };
 
 
-
-    setInfo('verfied your email address');
-    // navigate('/')
-    
 
   }
   return (
     <>
-      <div className="relative h-screen w-screen ">
-        <img src="https://i.ibb.co/dL8GQvF/4.png" className="absolute w-screen h-screen blur-[3px]" alt="background" />
-        <div className="flex content-center items-center justify-center h-full w-screen ">
+      <div className="relative h-screen w-[98.5vw] ">
+        <img src="https://i.ibb.co/dL8GQvF/4.png" className="absolute w-[98.5vw] h-screen blur-[3px]" alt="background" />
+        <div className="flex content-center items-center justify-center h-full w-[98.5vw] ">
           <div className="w-full sm:w-8/12 md:w-6/12 lg:w-4/12 px-4">
             <div className="relative bg-white/60 flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
-              <div className="mt-28 rounded-t mb-0 px-6 py-6">
+              <div className=" rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-blueGray-500 text-sm font-bold">
                     Sign up with
@@ -188,14 +169,7 @@ export default function Register() {
                           Privacy Policy
                         </a>
                       </span>
-                      
                     </label>
-                    <div>
-                      {/* //loading added */}
-                      loading
-                    </div>
-                    {/* info */}
-                    {/* error */}
                   </div>
 
                   <div className="text-center mt-6">

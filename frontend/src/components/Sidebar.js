@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { sidebarToggle } from '../redux/sidebar/sidebarSlice';
-const Sidebar = ({direction}) => {
-    const isToggle = useSelector(state => state.sidebarToggle.sidebar);
+const Sidebar = () => {
+    const isToggle = useSelector(state => state.sidebar.sidebar);
     const dispatch = useDispatch();
 
     const toggleSidebar = isToggle === true ? "translate-x-0 w-1/3" : "-translate-x-full w-1/3";
@@ -35,11 +35,7 @@ const Sidebar = ({direction}) => {
                     </div>
                 </div>
             </div>
-
-            <div className={`fixed h-screen w-screen right-0  bg-slate-300 opacity-25 ${ishide} z-20`} onClick={() => dispatch(sidebarToggle())}>
-      </div>
-
-        </>
+            </>
     )
 }
 

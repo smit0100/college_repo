@@ -7,6 +7,14 @@ module.exports = async (email, subject, text) => {
     
 
 let transporter = nodemailer.createTransport({
+<<<<<<< HEAD
+    host: process.env.HOST,
+    port: process.env.EMAIL_PORT,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.USER, // generated ethereal user
+      pass: process.env.PASSPORT, // generated ethereal password
+=======
     host: 'smtp.elasticemail.com',
     // host:'smtp.mailgun.org',
     port: 2525,
@@ -17,11 +25,16 @@ let transporter = nodemailer.createTransport({
         // pass:'0a4b3f2cf7c5e980a0f7b026f7a43620-f7d687c0-1eb0b1fb'
       user: 'smitdankhra01@gmail.com', // generated ethereal user
       pass: '06C6C6BBC38B155A2A2FA942C65D0838BDF7', // generated ethereal 
+>>>>>>> 67069672a1040d66f7d4eb77d8ac808be5e4935a
     },
 });
     
     let info = await transporter.sendMail({
+<<<<<<< HEAD
+        from: process.env.USER, // sender address
+=======
         from: 'smitdankhra01@gmail.com', // sender address
+>>>>>>> 67069672a1040d66f7d4eb77d8ac808be5e4935a
         to: email, // list of receivers
         subject: subject, // Subject line
         text: text, // plain text body

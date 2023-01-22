@@ -1,0 +1,4 @@
+.restroColumn{
+    @apply p-3 w-full  sm:w-6/12  flex 
+}
+
